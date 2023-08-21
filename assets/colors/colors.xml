@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blueDiamondColor">#FF532D6D</color>
+    <color name="gunPowderColor">#FF505054</color>
+    <color name="whitePlatinumColor">#FFE8E8E8</color>
+    <color name="silverColor">#FFBEBEBE</color>
+    <color name="whiteSmokeColor">#FFF8F8F8</color>
+    <color name="magnoliaColor">#FFFAF5FF</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="skyBlueColor">#068FFF</color>
+    <color name="blackColor">#000000</color>
+    <color name="darkGreyColor">#0C0C0D</color>
+</resources>
