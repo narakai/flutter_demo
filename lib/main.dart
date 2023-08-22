@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/env.dart';
 import 'package:flutter_demo/extension/context_extension.dart';
+import 'package:flutter_demo/theme/app_theme.dart';
+import 'package:flutter_demo/theme/dimen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'gen/assets.gen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,11 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        fontFamily: Assets.fonts.montserratRegular,
-      ),
+      theme: AppTheme.light,
       home: const MyHomePage(
         title: 'Flutter Demo',
       ),
@@ -47,17 +43,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: context.colorTheme.inversePrimary,
+        backgroundColor: context.colorTheme.primary,
         title: Text(context.localization.tab_checkout),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              Env.restApiEndpoint,
-            ),
-          ],
+      body: Container(
+        color: context.colorTheme.inversePrimary,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                Env.restApiEndpoint,
+                style: context.textTheme.labelMedium,
+              ),
+            ],
+          ),
         ),
       ),
     );
