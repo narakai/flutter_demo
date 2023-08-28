@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/env.dart';
 import 'package:flutter_demo/extension/context_extension.dart';
 import 'package:flutter_demo/theme/app_theme.dart';
-import 'package:flutter_demo/theme/dimen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'di/di.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
+  await configureInjection();
   runApp(const MyApp());
 }
 
