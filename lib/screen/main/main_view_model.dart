@@ -31,10 +31,8 @@ class MainViewModel extends StateNotifier<MainViewState> {
     }).doOnDone(() {
       _isLoading.add(false);
     }).doOnError((error, _) {
-      print('error $error');
       state = MainViewState.error(error.toString());
     }).listen((banners) {
-      print('banners are ${banners.length}');
       _bannersStream.add(banners);
     });
   }
