@@ -5,7 +5,7 @@ import 'package:retrofit/retrofit.dart';
 part 'wanandroid_service.g.dart';
 
 abstract class WanAndroidService {
-  Future<List<BannerResponse>> getBanners();
+  Future<BannerResponse> getBanners();
 }
 
 @RestApi()
@@ -14,5 +14,5 @@ abstract class WanAndroidServiceImpl extends WanAndroidService {
 
   @override
   @GET('banner/json')
-  Future<List<BannerResponse>> getBanners();
+  Future<BannerResponse> getBanners();
 }

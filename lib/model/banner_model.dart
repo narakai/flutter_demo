@@ -12,7 +12,7 @@ class BannerModel extends Equatable {
   final int type;
   final String url;
 
-  BannerModel(
+  const BannerModel(
       {required this.desc,
       required this.id,
       required this.imagePath,
@@ -22,7 +22,7 @@ class BannerModel extends Equatable {
       required this.type,
       required this.url});
 
-  factory BannerModel.fromResponse(BannerResponse response) {
+  factory BannerModel.fromResponse(Banner response) {
     return BannerModel(
         desc: response.desc ?? '',
         id: response.id ?? 0,

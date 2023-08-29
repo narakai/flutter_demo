@@ -19,7 +19,7 @@ class WanAndroidRepositoryImpl extends WanAndroidRepository {
   Future<List<BannerModel>> getBanners() async {
     try {
       final response = await _wanAndroidService.getBanners();
-      return response
+      return response.data
           .map((banner) => BannerModel.fromResponse(banner))
           .toList();
     } catch (exception) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/theme/app_theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'di/di.dart';
@@ -12,10 +13,10 @@ void main() async {
   await dotenv.load();
   await configureInjection();
   final router = getIt.get<AppRouter>().router();
-  runApp(MyApp(router: router));
+  runApp(ProviderScope(child: MyApp(router: router)));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   final GoRouter router;
 
   const MyApp({
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       theme: AppTheme.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

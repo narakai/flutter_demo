@@ -6,6 +6,18 @@ part 'banner_response.g.dart';
 
 @JsonSerializable()
 class BannerResponse {
+  final List<Banner> data;
+  int errorCode;
+  String errorMsg;
+
+  BannerResponse(this.data, this.errorCode, this.errorMsg);
+
+  factory BannerResponse.fromJson(Map<String, dynamic> json) =>
+      _$BannerResponseFromJson(json);
+}
+
+@JsonSerializable()
+class Banner {
   final String? desc;
   final int? id;
   final String? imagePath;
@@ -15,9 +27,8 @@ class BannerResponse {
   final int? type;
   final String? url;
 
-  BannerResponse(this.desc, this.id, this.imagePath, this.isVisible, this.order,
+  Banner(this.desc, this.id, this.imagePath, this.isVisible, this.order,
       this.title, this.type, this.url);
 
-  factory BannerResponse.fromJson(Map<String, dynamic> json) =>
-      _$BannerResponseFromJson(fromDataJsonApi(json));
+  factory Banner.fromJson(Map<String, dynamic> json) => _$BannerFromJson(json);
 }

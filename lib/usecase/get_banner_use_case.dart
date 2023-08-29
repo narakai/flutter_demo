@@ -1,4 +1,5 @@
 import 'package:flutter_demo/api/repository/wanandroid_repository.dart';
+import 'package:flutter_demo/model/banner_model.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable()
@@ -7,7 +8,7 @@ class GetBannerUseCase {
 
   const GetBannerUseCase(this._wanAndroidRepository);
 
-  Future<void> call() {
+  Future<List<BannerModel>> call() {
     return _wanAndroidRepository.getBanners();
   }
 }
