@@ -7,8 +7,8 @@ part 'banner_response.g.dart';
 @JsonSerializable()
 class BannerResponse {
   final List<Banner> data;
-  int errorCode;
-  String errorMsg;
+  final int errorCode;
+  final String errorMsg;
 
   BannerResponse(this.data, this.errorCode, this.errorMsg);
 
