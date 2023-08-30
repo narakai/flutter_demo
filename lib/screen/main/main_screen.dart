@@ -52,7 +52,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                 color: ColorName.blackColor.withOpacity(0.5), // 半透明黑色背景
                 child: const Center(
                   child: CircularProgressIndicator(
-                      backgroundColor: ColorName.whiteColor), // loading 控件
+                      backgroundColor: ColorName.skyBlueColor), // loading 控件
                 ),
               ),
           ]),
