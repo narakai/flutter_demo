@@ -25,28 +25,38 @@ class MainScreen extends ConsumerStatefulWidget {
 class _MainScreenState extends ConsumerState<MainScreen> {
   Widget get _mainScreenContent => Consumer(builder: (_, widgetRef, __) {
         final banners = ref.watch(bannersStream).value ?? [];
+        final isLoading = ref.watch(isLoadingProvider).value ?? false;
 
         return Scaffold(
           appBar: AppBar(
             backgroundColor: context.colorTheme.primary,
             title: Text(context.localization.tab_checkout),
           ),
-          body: Container(
-            color: context.colorTheme.inversePrimary,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    Env.restApiEndpoint + banners.length.toString(),
-                    style: context.textTheme.labelMedium,
-                  ),
-                ],
+          body: Stack(children: [
+            Container(
+              color: context.colorTheme.inversePrimary,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      Env.restApiEndpoint + banners.length.toString(),
+                      style: context.textTheme.labelMedium,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
+            if (isLoading) // 根据需要展示 loading 控件
+              Container(
+                color: ColorName.blackColor.withOpacity(0.5), // 半透明黑色背景
+                child: const Center(
+                  child: CircularProgressIndicator(
+                      backgroundColor: ColorName.whiteColor), // loading 控件
+                ),
+              ),
+          ]),
         );
-        ;
       });
 
   @override
