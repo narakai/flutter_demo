@@ -22,13 +22,29 @@ part 'main_view_model.g.dart';
 // final bannersStream = StreamProvider.autoDispose(
 //     (ref) => ref.watch(mainViewModelProvider.notifier)._bannersStream.stream);
 
-@riverpod
-Stream<List<BannerModel>> bannersStream(BannersStreamRef ref) =>
-    ref.watch(mainViewModelProvider.notifier)._bannersStream.stream;
+// @riverpod
+// Stream<List<BannerModel>> bannersStream(BannersStreamRef ref) =>
+//     ref.watch(mainViewModelProvider.notifier)._bannersStream.stream;
 
 @riverpod
-Stream<bool> loadingStream(LoadingStreamRef ref) =>
-    ref.watch(mainViewModelProvider.notifier)._isLoading.stream;
+class BannersStream extends _$BannersStream {
+  @override
+  Stream<List<BannerModel>> build() {
+    return ref.watch(mainViewModelProvider.notifier)._bannersStream.stream;
+  }
+}
+
+// @riverpod
+// Stream<bool> loadingStream(LoadingStreamRef ref) =>
+//     ref.watch(mainViewModelProvider.notifier)._isLoading.stream;
+
+@riverpod
+class LoadingStream extends _$LoadingStream {
+  @override
+  Stream<bool> build() {
+    return ref.watch(mainViewModelProvider.notifier)._isLoading.stream;
+  }
+}
 
 @riverpod
 class MainViewModel extends _$MainViewModel {
